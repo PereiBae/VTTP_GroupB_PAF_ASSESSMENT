@@ -112,7 +112,7 @@ public class MongoMovieRepository {
         GroupOperation groupOperation = Aggregation.group("directors").count().as("movies_count").push("_id").as("imdb_ids");
         SortOperation sortOperation = Aggregation.sort(Sort.Direction.DESC, "movies_count");
         LimitOperation limitOperation = Aggregation.limit(count);
-        Aggregation aggregation = Aggregation.newAggregation(groupOperation, sortOperation, limitOperation);
+        Aggregation aggregation = Aggregation.newAggregation(matchOperation, groupOperation, sortOperation, limitOperation);
         AggregationResults<Document> results = mongoTemplate.aggregate(aggregation, "imdb", Document.class);
         return results.getMappedResults();
     }

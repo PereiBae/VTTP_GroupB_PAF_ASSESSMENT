@@ -13,14 +13,8 @@ import vttp.batch5.paf.movies.services.MovieService;
 
 import java.io.*;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
-
-import static vttp.batch5.paf.movies.Utils.Utility.stringToDate;
 
 @Component
 public class Dataloader implements CommandLineRunner {

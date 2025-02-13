@@ -1,6 +1,5 @@
 FROM openjdk:23-jdk-oracle AS builder
 
-
 ARG COMPILED_DIR=/compiledir
 
 WORKDIR ${COMPILED_DIR}
@@ -9,6 +8,7 @@ COPY src src
 COPY .mvn .mvn
 COPY pom.xml .
 COPY mvnw .
+COPY src/main/resources/movies_post_2010.zip /data/movies_post_2010.zip
 
 RUN chmod +x mvnw
 RUN ./mvnw package -Dmaven.test.skip=true
@@ -25,7 +25,6 @@ EXPOSE ${SERVER_PORT}
 
 #second stage
 FROM openjdk:23-jdk-oracle
-
 
 ARG WORK_DIR=/app
 
